@@ -43,7 +43,7 @@ def get_physics_constant(constant_name: str) -> Dict[str, Any]:
             return{
                 "result": {
                     "constant": normalized_name,
-                    "value": f"{const_data['calue']}{const_data['unit']}",
+                    "value": f"{const_data['value']}{const_data['unit']}",
                     "description": const_data["description"]
                 },
                 "status": "success",
