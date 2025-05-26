@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-Agent Tutor Bot</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+  <div class="bg-white shadow-xl rounded-lg p-8 w-full max-w-xl">
+    <h1 class="text-3xl font-bold mb-6 text-center text-indigo-600">Multi-Agent Tutor Bot</h1>
+    <form id="queryForm" class="flex flex-col space-y-4">
+      <label class="text-gray-700 text-lg font-medium">Enter your question:</label>
+      <textarea id="userInput" rows="4" placeholder="e.g. What is the speed of light?" class="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"></textarea>
+      <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-md">Ask</button>
+    </form>
+    <div id="response" class="mt-6 text-gray-800 whitespace-pre-wrap"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('queryForm');
+    const responseDiv = document.getElementById('response');
+    const DEBUG = true; // Set to false in production
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const input = document.getElementById('userInput').value.trim();
+      if (!input) {
+        responseDiv.textContent = 'Please enter a question';
+        return;
+      }
+
+      responseDiv.textContent = 'Thinking...';
+      const payload = { question: input };
+
+      if (DEBUG) {
+        console.log('Sending request:', payload);
+      }
+
+      try {
+        const res = await fetch('/ask', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (!res.ok) {
+          const errorText = await res.text(); // Get raw response text for debugging
+          if (DEBUG) {
+            console.error('Server response:', {
+              status: res.status,
+              statusText: res.statusText,
+              body: errorText
+            });
+          }
+          throw new Error(`Server error (${res.status}): ${errorText || 'No error details available'}`);
+        }
+
+        const data = await res.json();
+        responseDiv.textContent = data.response || 'No response received.';
+      } catch (error) {
+        console.error('Request failed:', error);
+        responseDiv.textContent = DEBUG ? 
+          `Error: ${error.message}` : 
+          'Sorry, something went wrong. Please try again.';
+      }
+    });
+</script>
+</body>
+</html>
