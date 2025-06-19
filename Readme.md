@@ -103,3 +103,13 @@ GOOGLE_API_KEY=your_google_api_key_here
 adk web
 ```
 
+## 🙋 About Me
+
+Hi! I’m **Karan** 👋 — a full-stack developer passionate about **AI**, **creativity tools**, and building solutions that solve real-world problems.
+
+Let’s connect on [LinkedIn](https://www.linkedin.com/in/karanops93) or check out more of my work on [GitHub](https://github.com/KaranOps).
+
+---
+
+Made with ❤️
+
