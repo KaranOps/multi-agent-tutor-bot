@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\karan\Downloads\multi-agent-tutor-bot\.venv"
+VIRTUAL_ENV="C:\Users\karan\Downloads\Projects\multi-agent-tutor-bot\.venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

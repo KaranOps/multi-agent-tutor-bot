@@ -1,6 +1,6 @@
 # 🤖 Multi-Agent Tutor Bot
 
-The **Multi-Agent Tutor Bot** is an intelligent, multi-agent web-based chatbot that can answer academic and general queries using modular AI agents. Built with FastAPI, Tailwind CSS, and Google's Generative AI API (Gemini/PaLM), it offers a clean UI and smart delegation to specialized sub-agents.
+The **Multi-Agent Tutor Bot** is an intelligent, multi-agent web-based chatbot that can answer academic and general queries using modular AI agents. Built with Google's Generative AI API (Gemini), it offers a clean UI and smart delegation to specialized sub-agents.
 
 ---
 
@@ -44,8 +44,6 @@ multi-agent-tutor-bot/
 ✅ Math and general agents  
 ✅ Modular design for adding new agents  
 ✅ Google Gemini API integration  
-✅ Beautiful frontend using Tailwind CSS  
-✅ Ready for local & cloud deployment
 
 ---
 
@@ -55,7 +53,7 @@ multi-agent-tutor-bot/
 2. `main.py` receives it and sends it to the `tutor_agent`.
 3. The `tutor_agent` uses intelligent routing logic to delegate the task to:
    - `math_agent` for arithmetic and math questions
-   - `general_agent` for casual or knowledge-based questions
+   - `physics_agent` for physics-related questions
 4. The selected sub-agent generates a response via the Google Gemini model.
 5. The answer is returned and displayed to the user.
 
